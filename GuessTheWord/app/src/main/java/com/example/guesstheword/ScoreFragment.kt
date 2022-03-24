@@ -30,10 +30,10 @@ class ScoreFragment : Fragment() {
 
         binding.btReset.setOnClickListener {
 
-            navGraphViewModel.score.value?.let{a->navGraphViewModel.score.value=0}
-            navGraphViewModel.contador.value?.let{a->navGraphViewModel.contador.value=0}
+            navGraphViewModel.score.postValue(0)
+            navGraphViewModel.contador.postValue(0)
             //Resetear la lista
-            navGraphViewModel.wordListLiveData.postValue(resources.getStringArray(R.array.words).toMutableList())
+            navGraphViewModel.wordListLiveData.setValue(resources.getStringArray(R.array.words).toMutableList())
             findNavController().navigate(ScoreFragmentDirections.actionScoreFragmentToGameFragment()) }
     }
 

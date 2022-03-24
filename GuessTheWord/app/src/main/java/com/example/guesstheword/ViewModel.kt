@@ -12,16 +12,16 @@ class ViewModel(application: Application) : AndroidViewModel(application) {
     var score = MutableLiveData(0)
 
     var wordList: MutableList<String>
-    var wordListLiveData=MutableLiveData<MutableList<String>>()
+    var wordListLiveData = MutableLiveData<MutableList<String>>()
 
-    var contador=MutableLiveData(0)
-    var listsize =resources.getStringArray(R.array.words).size
+    var contador = MutableLiveData(0)
+    var listsize = resources.getStringArray(R.array.words).size
 
 
     init {
         Log.i("ViewModel", "ViewModel created!")
-        wordList=resources.getStringArray(R.array.words).toMutableList()
-        wordListLiveData.postValue(wordList)
+        wordList = resources.getStringArray(R.array.words).toMutableList()
+        wordListLiveData.setValue(wordList)
         resetList()
         nextWord()
     }
@@ -41,17 +41,18 @@ class ViewModel(application: Application) : AndroidViewModel(application) {
 
     /** Methods for updating the UI **/
     fun onSkip() {
-        if (listsize>contador.value!!) {
-            score.value?.let { a -> score.value = a - 1 }
+        if (listsize > contador.value!!) {
+            score.value?.let { score.value = it - 1 }
             nextWord()
-            contador.value?.let{a-> contador.value=a+1}
+            contador.value?.let { contador.value = it + 1 }
         }
     }
+
     fun onCorrect() {
-        if(listsize>contador.value!!) {
-            score.value?.let { a -> score.value = a + 1 }
+        if (listsize > contador.value!!) {
+            score.value?.let { score.value = it + 1 }
             nextWord()
-            contador.value?.let{a-> contador.value=a+1 }
+            contador.value?.let { contador.value = it + 1 }
         }
     }
 
@@ -59,8 +60,13 @@ class ViewModel(application: Application) : AndroidViewModel(application) {
      * Moves to the next word in the list.
      */
     private fun nextWord() {
-        if (wordList.isNotEmpty()) {
-            word.postValue(wordList.removeAt(0)) // Select and remove a word from the list
-        }
+        if (!wordListLiveData.value.isNullOrEmpty()) {
+       // Log.d("---", wordListLiveData.value?.get(0) ?: "Mal")
+
+        word.postValue(wordListLiveData.value?.removeAt(0))// Select and remove a word from the list
+       // Log.d("---", word.toString())
+      //  Log.d("---", word.value.toString())
+
+         }
     }
 }
