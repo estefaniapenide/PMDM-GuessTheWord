@@ -25,8 +25,18 @@
         android:layout_height="wrap_content"
         android:text=""
         android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btReset"
         app:layout_constraintEnd_toEndOf="@+id/tvYouScored"
         app:layout_constraintStart_toStartOf="@+id/tvYouScored"
         app:layout_constraintTop_toBottomOf="@+id/tvYouScored" />
+
+    <Button
+        android:id="@+id/btReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RESET"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvYouScored"
+        app:layout_constraintStart_toStartOf="@+id/tvYouScored"
+        app:layout_constraintTop_toBottomOf="@+id/tvScore" />
 </androidx.constraintlayout.widget.ConstraintLayout>

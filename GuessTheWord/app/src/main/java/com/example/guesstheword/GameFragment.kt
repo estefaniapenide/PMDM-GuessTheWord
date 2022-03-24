@@ -16,9 +16,11 @@ class GameFragment : Fragment() {
     private var _binding:FragmentGameBinding?=null
     private val binding get()=_binding!!
 
-    private val navGraphViewModel : ViewModel by navGraphViewModels<ViewModel>(R.id.nav_graph) {
+    private val navGraphViewModel : ViewModel by navGraphViewModels<ViewModel>(R.id.navigation) {
         defaultViewModelProviderFactory
     }
+
+    var contador=0
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -39,12 +41,14 @@ class GameFragment : Fragment() {
 
     private fun onCorrect(){
         navGraphViewModel.onCorrect()
+        juegoTerminado()
         //updateWordText()
         //updateScoreText()
     }
 
     private fun onSkip(){
         navGraphViewModel.onSkip()
+        juegoTerminado()
         //updateWordText()
         //updateScoreText()
     }
@@ -65,6 +69,21 @@ class GameFragment : Fragment() {
             binding.tvScoreGame.text=it.toString()
         }
     }
+
+    private fun contador():Int{
+        navGraphViewModel.contador.observe(viewLifecycleOwner){
+            contador=it
+        }
+        return contador
+    }
+
+    private fun juegoTerminado(){
+        if(contador()>=navGraphViewModel.listsize){
+            onEndGame()
+        }
+    }
+
+
 
     override fun onDestroy() {
         super.onDestroy()

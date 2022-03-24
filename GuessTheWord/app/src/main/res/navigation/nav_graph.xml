@@ -12,20 +12,27 @@
         tools:layout="@layout/fragment_title" >
         <action
             android:id="@+id/action_titleFragment_to_gameFragment"
-            app:destination="@id/gameFragment" />
+            app:destination="@id/navigation" />
     </fragment>
-    <fragment
-        android:id="@+id/gameFragment"
-        android:name="com.example.guesstheword.GameFragment"
-        android:label="fragment_game"
-        tools:layout="@layout/fragment_game" >
-        <action
-            android:id="@+id/action_gameFragment_to_scoreFragment"
-            app:destination="@id/scoreFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/scoreFragment"
-        android:name="com.example.guesstheword.ScoreFragment"
-        android:label="fragment_score"
-        tools:layout="@layout/fragment_score" />
+    <navigation android:id="@+id/navigation"
+        app:startDestination="@id/gameFragment">
+        <fragment
+            android:id="@+id/gameFragment"
+            android:name="com.example.guesstheword.GameFragment"
+            android:label="fragment_game"
+            tools:layout="@layout/fragment_game">
+            <action
+                android:id="@+id/action_gameFragment_to_scoreFragment"
+                app:destination="@id/scoreFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/scoreFragment"
+            android:name="com.example.guesstheword.ScoreFragment"
+            android:label="fragment_score"
+            tools:layout="@layout/fragment_score" >
+            <action
+                android:id="@+id/action_scoreFragment_to_gameFragment"
+                app:destination="@id/gameFragment" />
+        </fragment>
+    </navigation>
 </navigation>
