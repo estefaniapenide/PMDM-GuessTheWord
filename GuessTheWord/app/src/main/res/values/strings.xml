@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">GuessTheWord</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="get_ready">Get ready to...</string>
     <string name="guess_word">guess the word!!!</string>

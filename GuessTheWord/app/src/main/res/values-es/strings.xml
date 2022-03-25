@@ -1,2 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+
+<resources>
+    <string name="app_name">Adivina la palabra</string>
+    <string name="hello_blank_fragment">Hola fragmento en blanco</string>
+    <string name="get_ready">Prepárate para...</string>
+    <string name="guess_word">adivinar la palabra!!!</string>
+    <string name="play">JUGAR</string>
+    <string name="skip">SALTAR</string>
+    <string name="got_it">ACERTÉ</string>
+    <string name="end_game">FIN DEL JUEGO</string>
+    <string name="the_word_is">La palabra es...</string>
+    <string name="you_scored">Tu puntuación es de...</string>
+    <string name="score">Puntuación:</string>
+
+    <string-array name="words">
+        <item>reina</item>
+        <item>hospital</item>
+        <item>baloncesto</item>
+        <item>gato</item>
+        <item>cambio</item>
+        <item>caracol</item>
+        <item>sopa</item>
+        <item>calendario</item>
+        <item>triste</item>
+        <item>escritorio</item>
+        <item>guitarra</item>
+        <item>casa</item>
+        <item>ferrocarril</item>
+        <item>cebra</item>
+        <item>gelatina</item>
+        <item>coche</item>
+        <item>cuervo</item>
+        <item>comercio</item>
+        <item>bolsa</item>
+        <item>rollo</item>
+        <item>burbuja</item>
+    </string-array>
+</resources>

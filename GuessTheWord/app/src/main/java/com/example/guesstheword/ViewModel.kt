@@ -59,14 +59,10 @@ class ViewModel(application: Application) : AndroidViewModel(application) {
      */
      fun nextWord() {
         if (!wordListLiveData.value.isNullOrEmpty()) {
-       // Log.d("---", wordListLiveData.value?.get(0) ?: "Mal")
-
-        word.setValue(wordListLiveData.value?.removeAt(0))// Select and remove a word from the list
-       // Log.d("---", word.toString())
-      //  Log.d("---", word.value.toString())
-
-         }else{
-             juegoTerminado=true
+            juegoTerminado=false
+            word.setValue(wordListLiveData.value?.removeAt(0))// Select and remove a word from the list
+        }else{
+            juegoTerminado=true
          }
     }
 }

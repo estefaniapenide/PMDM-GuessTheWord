@@ -40,15 +40,13 @@ class GameFragment : Fragment() {
     }
 
     private fun onCorrect(){
+        juegoTerminado()
         navGraphViewModel.onCorrect()
-        juegoTerminado()//Si se pone antes de navGraphViewModel.onCorrect(), deja pasar las 21 palabras,
-                        // pero hay que ver qué pasa con la variable juegoterminado para que funcione la puntuación
     }
 
     private fun onSkip(){
+        juegoTerminado()
         navGraphViewModel.onSkip()
-        juegoTerminado()//Si se pone antes de navGraphViewModel.onSkip(), deja pasar las 21 palabras,
-                        // pero hay que ver qué pasa con la variable juegoterminado para que funcione la puntuación
     }
 
     private fun onEndGame(){
