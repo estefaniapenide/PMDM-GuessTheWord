@@ -20,8 +20,7 @@ class GameFragment : Fragment() {
         defaultViewModelProviderFactory
     }
 
-    var contador=0
-
+    lateinit var lista:MutableList<String>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding= FragmentGameBinding.inflate(inflater,container,false)
@@ -30,6 +29,7 @@ class GameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         updateWordText()
         updateScoreText()
@@ -41,16 +41,14 @@ class GameFragment : Fragment() {
 
     private fun onCorrect(){
         navGraphViewModel.onCorrect()
-        juegoTerminado()
-        //updateWordText()
-        //updateScoreText()
+        juegoTerminado()//Si se pone antes de navGraphViewModel.onCorrect(), deja pasar las 21 palabras,
+                        // pero hay que ver qué pasa con la variable juegoterminado para que funcione la puntuación
     }
 
     private fun onSkip(){
         navGraphViewModel.onSkip()
-        juegoTerminado()
-        //updateWordText()
-        //updateScoreText()
+        juegoTerminado()//Si se pone antes de navGraphViewModel.onSkip(), deja pasar las 21 palabras,
+                        // pero hay que ver qué pasa con la variable juegoterminado para que funcione la puntuación
     }
 
     private fun onEndGame(){
@@ -70,15 +68,12 @@ class GameFragment : Fragment() {
         }
     }
 
-    private fun contador():Int{
-        navGraphViewModel.contador.observe(viewLifecycleOwner){
-            contador=it
-        }
-        return contador
-    }
 
     private fun juegoTerminado(){
-        if(contador()>=navGraphViewModel.listsize){
+        navGraphViewModel.wordListLiveData.observe(viewLifecycleOwner){
+            lista=it
+        }
+        if(lista.isNullOrEmpty()){
             onEndGame()
         }
     }

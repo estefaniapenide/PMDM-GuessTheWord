@@ -29,11 +29,10 @@ class ScoreFragment : Fragment() {
         }
 
         binding.btReset.setOnClickListener {
-
             navGraphViewModel.score.postValue(0)
-            navGraphViewModel.contador.postValue(0)
-            //Resetear la lista
             navGraphViewModel.wordListLiveData.setValue(resources.getStringArray(R.array.words).toMutableList())
+            navGraphViewModel.resetList()
+            navGraphViewModel.nextWord()
             findNavController().navigate(ScoreFragmentDirections.actionScoreFragmentToGameFragment()) }
     }
 
